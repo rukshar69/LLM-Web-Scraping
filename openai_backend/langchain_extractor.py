@@ -35,6 +35,6 @@ def scrape_with_playwright(url:str, attributes:list, llm: ChatOpenAI):
         extracted_content = extract(schema=schema, content=split.page_content, llm=llm)
         extracted_content_per_split.append(extracted_content)
 
-    extracted_content = extract(schema=schema, content=docs_transformed[0].page_content)
+    #extracted_content = extract(schema=schema, content=docs_transformed[0].page_content)
     return_json = {'result':extracted_content}
     return return_json
