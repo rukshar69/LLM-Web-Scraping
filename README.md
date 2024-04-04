@@ -103,7 +103,8 @@ The API is available on the address **http://127.0.0.1:8000/extract**
 
 ## Video Demonstration
 
-![video](https://youtu.be/oXczizVHhuU)
+<iframe width="560" height="315" src="https://youtu.be/oXczizVHhuU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 
 
 ## FastAPI API
