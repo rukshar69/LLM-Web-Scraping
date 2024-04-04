@@ -86,3 +86,5 @@ uvicorn fastapi_app:app --reload
 ```
 
 The API is available on the address **http://127.0.0.1:8000/extract**
+
+![Diagram](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/openai_backend/web_scrape_llm.png)
