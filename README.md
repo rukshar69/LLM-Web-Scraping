@@ -103,7 +103,7 @@ The API is available on the address **http://127.0.0.1:8000/extract**
 
 ## Video Demonstration
 
-<iframe width="560" height="315" src="https://youtu.be/oXczizVHhuU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[Cohere LLM Web Scraper](https://youtu.be/oXczizVHhuU)
 
 
 
