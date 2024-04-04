@@ -1,0 +1,5 @@
+streamlit
+streamlit-tags
+fastapi
+"uvicorn[standard]"
+requests
