@@ -2,6 +2,7 @@
 
 **Python Version**:3.11
 
+
 # Streamlit Frontend
 
 The code for the streamlit frontend is available [here](https://github.com/rukshar/LLM-Web-Scraping/tree/main/streamlit_frontend/scraper_ui.py).
@@ -17,6 +18,28 @@ Upon clicking the **Extract Attributes** button, the script sends a POST request
 The JSON response from the API is then displayed in the frontend. 
 
 **Fault tolerance** is ensured by keeping the FastAPI API calling logic within try-except blocks. The script displays an error message if the API call fails and the except block handles the error.
+
+## Running the Frontend
+
+Create an Anaconda virtual environment with the following command:
+```bash
+conda create -n streamlit python=3.11
+```
+
+Activate the virtual environment with the following command:
+```bash
+conda activate streamlit
+```
+
+Install the required packages from the requirements.txt file with the following command:
+```bash
+pip install -r requirements_frontend.txt
+```
+
+To run the frontend, run the following command in the terminal:
+```bash
+streamlit run scraper_ui.py
+```
 
 # OpenAI + LangChain + FastAPI Backend
 
@@ -37,3 +60,25 @@ A schema is constructed with the **properties** and **required** keys using the 
 LangChain's **create_extraction_chain** method is then used to extract the information in a JSON-based format using the LLM, the schema, and the clean web page data.
 
 **Fault tolerance** is ensured by keeping the **scrape_with_playwright** method within try-except blocks in the FastAPI API definition. The script displays an error message if the function call fails and the except block handles the error.
+
+## Running the Backend
+
+Create an Anaconda virtual environment with the following command:
+```bash
+conda create -n backend python=3.11
+```
+
+Activate the virtual environment with the following command:
+```bash
+conda activate backend
+```
+
+Install the required packages from the requirements.txt file with the following command:
+```bash
+pip install -r requirements_backend.txt
+```
+
+To run the backend, run the following command in the terminal:
+```bash
+uvicorn fastapi_app:app --reload
+```

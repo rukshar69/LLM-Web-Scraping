@@ -1,6 +1,3 @@
-streamlit
-streamlit-tags
-requests
 fastapi
 "uvicorn[standard]"
 langchain-openai 
