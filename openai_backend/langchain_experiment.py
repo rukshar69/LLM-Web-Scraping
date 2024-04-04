@@ -13,6 +13,7 @@ html = loader.load() #list of documents
 bs_transformer = BeautifulSoupTransformer()
 docs_transformed = bs_transformer.transform_documents(html, tags_to_extract=['p', 'li', 'div', 'a',"span"])
 
+print(docs_transformed[0].page_content)
 # Grab the first 1000 tokens of the site
 splitter = RecursiveCharacterTextSplitter.from_tiktoken_encoder(
     chunk_size=1000, chunk_overlap=0

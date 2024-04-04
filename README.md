@@ -41,6 +41,8 @@ To run the frontend, run the following command in the terminal:
 streamlit run scraper_ui.py
 ```
 
+The app runs on the address **http://127.0.0.1:8501**
+
 # OpenAI + LangChain + FastAPI Backend
 
 ## FastAPI API
@@ -82,3 +84,5 @@ To run the backend, run the following command in the terminal:
 ```bash
 uvicorn fastapi_app:app --reload
 ```
+
+The API is available on the address **http://127.0.0.1:8000/extract**
