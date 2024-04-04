@@ -45,6 +45,9 @@ The app runs on the address **http://127.0.0.1:8501**
 
 # OpenAI + LangChain + FastAPI Backend
 
+![Diagram](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/openai_backend/web_scrape_llm.jpg)
+
+
 ## FastAPI API
 
 The FastAPI API(*/extract*) is a RESTful API that takes a URL and a list of attribute names as input and returns the extracted attributes from the webpage after calling a method **scrape_with_playwright** that takes input the URL, the list of attribute names and the LLM. The LLM is set to OpenAI's **gpt-3.5-turbo**. The LLM is loaded here to prevent re-initialization of the LLM in the scrape_with_playwright method.
@@ -87,4 +90,3 @@ uvicorn fastapi_app:app --reload
 
 The API is available on the address **http://127.0.0.1:8000/extract**
 
-![Diagram](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/openai_backend/web_scrape_llm.png)
