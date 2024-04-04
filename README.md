@@ -1,5 +1,7 @@
 # LLM-Web-Scraping
 
+**Python Version**:3.11
+
 # Streamlit Frontend
 
 The code for the streamlit frontend is available [here](https://github.com/rukshar/LLM-Web-Scraping/tree/main/streamlit_frontend/scraper_ui.py).
