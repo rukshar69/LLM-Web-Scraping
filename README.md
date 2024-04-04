@@ -101,6 +101,11 @@ The API is available on the address **http://127.0.0.1:8000/extract**
 
 ![cohere diagram](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/cohere_backend/cohere_fastpi.jpg)
 
+## Video Demonstration
+
+![video](https://youtu.be/oXczizVHhuU)
+
+
 ## FastAPI API
 
 The FastAPI API(*/extract*) is a RESTful API that takes a URL and a list of attribute names as input and returns the extracted attributes from the webpage after calling a method **scrape_extract** that takes input the URL and the list of attribute names.
