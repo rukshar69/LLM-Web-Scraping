@@ -14,6 +14,8 @@ Upon clicking the **Extract Attributes** button, the script sends a POST request
 
 The JSON response from the API is then displayed in the frontend. 
 
+**Fault tolerance** is ensured by keeping the FastAPI API calling logic within try-except blocks. The script displays an error message if the API call fails and the except block handles the error.
+
 # OpenAI + LangChain + FastAPI Backend
 
 ## FastAPI API
@@ -31,3 +33,5 @@ LangChain provides playwright-based **AsyncChromiumLoader** and beautiful-soup-b
 A schema is constructed with the **properties** and **required** keys using the list of attribute names.
 
 LangChain's **create_extraction_chain** method is then used to extract the information in a JSON-based format using the LLM, the schema, and the clean web page data.
+
+**Fault tolerance** is ensured by keeping the **scrape_with_playwright** method within try-except blocks in the FastAPI API definition. The script displays an error message if the function call fails and the except block handles the error.
