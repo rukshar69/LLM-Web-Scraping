@@ -2,8 +2,8 @@
 
 **Python Version**:3.11
 
-
-# Streamlit Frontend
+<details>
+  <summary><b> Streamlit Frontend</b></summary>
 
 The code for the streamlit frontend is available [here](https://github.com/rukshar/LLM-Web-Scraping/tree/main/streamlit_frontend/scraper_ui.py).
 
@@ -43,7 +43,11 @@ streamlit run scraper_ui.py
 
 The app runs on the address **http://127.0.0.1:8501**
 
-# OpenAI + LangChain + FastAPI Backend
+</details>
+
+<details>
+<summary><b> OpenAI + LangChain + FastAPI Backend
+</b></summary>
 
 ![Diagram](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/openai_backend/web_scrape_llm.jpg)
 
@@ -54,7 +58,7 @@ The FastAPI API(*/extract*) is a RESTful API that takes a URL and a list of attr
 
 The code for API is in [fastapi_app.py](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/openai_backend/fastapi_app.py)
 
-## Extracting Scheme Data from Web Page
+## Extracting Schema Data from Web Page
 
 The code for extracting scheme data from the web page is in [langchain_extractor.py](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/openai_backend/langchain_extractor.py). Specifically, the code resides in the method **scrape_with_playwright**. The inputs to this method are the URL, the list of attribute names and the LLM. In this case, the LLM is OpenAI's **gpt-3.5-turbo**.
 
@@ -90,3 +94,27 @@ uvicorn fastapi_app:app --reload
 
 The API is available on the address **http://127.0.0.1:8000/extract**
 
+</details>
+
+<details>
+<summary><b>Cohere + LangChain + FastAPI Backend</b></summary>
+
+## FastAPI API
+
+The FastAPI API(*/extract*) is a RESTful API that takes a URL and a list of attribute names as input and returns the extracted attributes from the webpage after calling a method **scrape_extract** that takes input the URL and the list of attribute names.
+
+The code for API is in [fastapi_cohere.py](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/cohere_backend/fastapi_cohere.py)
+
+## Extracting Schema Data from Web Page
+
+The code for extracting schema data from the web page is in [cohere_extractor.py](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/cohere_backend/cohere_extractor.py). Specifically, the code resides in the method **scrape_extract**. The inputs to this method are the URL and the list of attribute names.
+
+**Web Scraping**:
+LangChain provides playwright-based **AsyncChromiumLoader** and beautiful-soup-based **BeautifulSoupTransformer** to extract the content from the web page. However, running **AsyncChromiumLoader** with **FastAPI** led to an error about a conflict in async mechanisms. Therefore, the code in the **AsyncChromiumLoaderWrapper** class was created to address this issue. This Wrapper class inherits from the **AsyncChromiumLoader** class and adds more async-await keywords. The code for the wrapper class is taken from [here](https://github.com/langchain-ai/langchain/issues/10475#issuecomment-1715118795).
+
+**Prompt Engineering**:
+The cleaned html content along with the attributes are inserted into a prompt for the Cohere LLM. The prompt is designed to extract only the attribute/schema values from the html content.
+
+**Cohere API**: Cohere provides free tier api to generate responses using its *command* model. The response is converted into a dictionary format and returned to FastAPI API function.
+
+</details>
