@@ -125,4 +125,29 @@ The cleaned html content along with the attributes are inserted into a prompt fo
 
 **Cohere API**: Cohere provides free tier api to generate responses using its *command* model. The response is converted into a dictionary format and returned to FastAPI API function.
 
+## Running the Backend
+
+Create an Anaconda virtual environment with the following command:
+```bash
+conda create -n backend python=3.11
+```
+
+Activate the virtual environment with the following command:
+```bash
+conda activate backend
+```
+
+Install the required packages from the requirements.txt file with the following command:
+```bash
+pip install -r requirements_cohere_backend.txt
+```
+
+To run the backend, run the following command in the terminal(after moving to the *cohere_backend* directory):
+```bash
+uvicorn fastapi_cohere:app --reload
+```
+
+The API is available on the address **http://127.0.0.1:8000/extract**
+
+
 </details>
