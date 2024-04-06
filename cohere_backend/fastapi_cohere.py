@@ -1,7 +1,8 @@
 from fastapi import FastAPI, Query
 from requests import get
 from pydantic import BaseModel
-from cohere_extractor import scrape_extract
+#from cohere_extractor import scrape_extract
+from cohere_extractor_v2 import scrape_extract
 import uvicorn
 
 class AttributeRequest(BaseModel):

@@ -6,6 +6,7 @@ from langchain_community.document_loaders.base import BaseLoader
 from langchain_community.document_loaders.chromium import AsyncChromiumLoader
 
 #https://github.com/langchain-ai/langchain/issues/10475
+#https://github.com/langchain-ai/langchain/blob/master/libs/community/langchain_community/document_loaders/chromium.py
 # This wrapper was created because FastAPI and AsyncChromiumLoader has conflicts over async mechanism
 
 class AsyncChromiumLoaderWrapper(AsyncChromiumLoader):
