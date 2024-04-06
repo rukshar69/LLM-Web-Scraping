@@ -103,7 +103,7 @@ The API is available on the address **http://127.0.0.1:8000/extract**
 
 ## Video Demonstration
 
-[Cohere LLM Web Scraper](https://youtu.be/oXczizVHhuU)
+[Cohere LLM Web Scraper](https://youtu.be/zhy6VixY-yA)
 
 
 
@@ -115,15 +115,29 @@ The code for API is in [fastapi_cohere.py](https://github.com/rukshar69/LLM-Web-
 
 ## Extracting Schema Data from Web Page
 
-The code for extracting schema data from the web page is in [cohere_extractor.py](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/cohere_backend/cohere_extractor.py). Specifically, the code resides in the method **scrape_extract**. The inputs to this method are the URL and the list of attribute names.
+The code for extracting schema data from the web page is in [cohere_extractor_v2.py](https://github.com/rukshar69/LLM-Web-Scraping/blob/main/cohere_backend/cohere_extractor_v2.py). Specifically, the code resides in the method **scrape_extract**. The inputs to this method are the URL and the list of attribute names.
 
-**Web Scraping**:
+### Web Scraping
+
 LangChain provides playwright-based **AsyncChromiumLoader** and beautiful-soup-based **BeautifulSoupTransformer** to extract the content from the web page. However, running **AsyncChromiumLoader** with **FastAPI** led to an error about a conflict in async mechanisms. Therefore, the code in the **AsyncChromiumLoaderWrapper** class was created to address this issue. This Wrapper class inherits from the **AsyncChromiumLoader** class and adds custom asynchronous methods to handle playwright web scraping. The code for the wrapper class is taken from [this GitHub issue](https://github.com/langchain-ai/langchain/issues/10475#issuecomment-1715118795). The GitHub issue discusses the error at length.
 
-**Prompt Engineering**:
-The cleaned html content along with the attributes are inserted into a prompt for the Cohere LLM. The prompt is designed to extract only the attribute/schema values from the html content.
+### Prompt Engineering
 
-**Cohere API**: Cohere provides free tier api to generate responses using its *command* model. The response is converted into a dictionary format and returned to FastAPI API function.
+The cleaned html content along with the attributes are inserted into a prompt for the Cohere LLM. The prompt is designed to extract only the attribute/schema values from the html content. The prompt returns a list of JSON objects with the attribute names and their corresponding values.
+
+### Cohere API
+
+Cohere provides free tier api to generate responses using its *command-r* model. The response is converted into a list of dictionaries format and returned to FastAPI API function. 
+
+For this, we split the extracted clean text to prevent overflow of information in the prompt. For each split entered into the prompt, we receive a list of dictionaries. The lists of dictionaries are concatenated and returned to the FastAPI API function.
+
+Here we check if the prompt return can be converted into a list of dictionaries. Otherwise, the returned data is not considered proper response and thus discarded. 
+
+### Fault tolerance
+
+Fault tolerance is ensured by keeping the **scrape_extract** method within try-except blocks in the FastAPI API definition. The frontend displays an error message if the function call fails and the except block handles the error.
+
+The decoding of prompt response to a list of dictionaries is kept in a **try-except** block for **fault tolerance**. 
 
 ## Running the Backend
 
